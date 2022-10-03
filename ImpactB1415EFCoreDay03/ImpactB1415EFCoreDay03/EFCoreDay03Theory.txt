@@ -1,0 +1,89 @@
+Loading Related Data:
+	Find out a Department
+	and	Load Employees Working in that Department
+		
+	Find out a Customer
+	and	Load Orders Placed by that Customer
+	
+
+IEnumerable gets the data from the database and filters it at client end.
+IQueryable will filter the data at server end and then get it at client end.
+
+Please refer the following URL to know more about Executing Stored Procedure via EF Core:
+
+https://www.entityframeworktutorial.net/efcore/working-with-stored-procedure-in-ef-core.aspx
+
+Let's create our stored procedure in MS SQL Server before we execute it in EF Core.
+
+If you follow the database-first approach, then execute the following script in your local SQL Server database:
+
+USE [SchoolDB]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[GetStudents]
+            @FirstName varchar(50)
+        AS
+        BEGIN
+            SET NOCOUNT ON;
+            select * from Students where FirstName like @FirstName +'%'
+        END
+GO
+If you are following the code-first approach, then follow the below steps:
+
+1. Add an empty migration by executing the following command in NPM (NuGet Package Manager):
+
+PM> Add-migration sp-GetStudents
+
+2. Write the following code in the Up method of empty migration class in <DateTime>_sp-GetStudents.cs:
+
+public partial class spGetStudents : Migration
+{
+    protected override void Up(MigrationBuilder migrationBuilder)
+    {
+        var sp = @"CREATE PROCEDURE [dbo].[GetStudents]
+                    @FirstName varchar(50)
+                AS
+                BEGIN
+                    SET NOCOUNT ON;
+                    select * from Students where FirstName like @FirstName +'%'
+                END";
+
+        migrationBuilder.Sql(sp);
+    }
+
+    protected override void Down(MigrationBuilder migrationBuilder)
+    {
+
+    }
+}
+3. Now, create the above stored procedure in the database by executing the following command in NPM:
+
+PM> Update-database
+
+This will create the GetStudents stored procedure in the SQL Server database.
+
+Execute Stored Procedures using FromSql
+
+As mentioned in the previous chapter, the FromSqlRaw method of DbSet can be used to execute the raw SQL queries to the underlying database. In the same way, it can be used to execute the stored procedure which returns entity data, but with some limitations.
+
+Restrictions:
+	1) Query has to return all columns from the table.
+	2) Query cannot perform join operation.
+
+ExecuteSqlRaw() will be used if stored procedure is executing insert, update or 	delete query. It returns integer.
+
+
+To get the data from View, follow the below steps:
+
+1) Create a class. Add properties in that class corrosponding to the
+   columns in the view query.
+
+2) Add a property of type DbSet<Class> created in Step1 in context class.
+
+3) Override OnModelCreating method and write the code in it.

@@ -1,0 +1,9 @@
+Select Stored Procedure:
+
+CREATE PROCEDURE [dbo].[GetEmployee]
+	@employeeId int
+AS
+	SELECT * FROM Employees
+	WHERE EmployeeId = @employeeId
+GO
+

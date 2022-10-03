@@ -1,0 +1,14 @@
+CREATE TABLE [dbo].[Departments]
+(
+	[DepartmentId] INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	Name nvarchar(30) NOT NULL
+)
+
+CREATE TABLE [dbo].[Employees] (
+    [EmployeeId]   INT             IDENTITY (1001, 1) NOT NULL PRIMARY KEY,
+    [FirstName]    NVARCHAR (20)   NOT NULL,
+    [LastName]     NVARCHAR (20)   NOT NULL,
+    [Salary]       DECIMAL (10, 2) NOT NULL,
+    [DepartmentId] INT REFERENCES Departments(DepartmentId) ON UPDATE CASCADE ON DELETE SET NULL            
+);
+

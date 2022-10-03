@@ -1,0 +1,14 @@
+Table Scripts for Linq To EF Demo:
+
+CREATE TABLE Departments(
+	Id int IDENTITY(1,1) PRIMARY KEY,
+	Name nvarchar(max) NOT NULL
+)
+
+CREATE TABLE Employees(
+	EmployeeId int IDENTITY(1,1) PRIMARY KEY,
+	FirstName nvarchar(25) NOT NULL,
+	LastName nvarchar(25) NOT NULL,
+	Salary float NOT NULL,
+	DepartmentId int REFERENCES Departments(Id) ON UPDATE CASCADE, ON DELETE SET NULL
+)

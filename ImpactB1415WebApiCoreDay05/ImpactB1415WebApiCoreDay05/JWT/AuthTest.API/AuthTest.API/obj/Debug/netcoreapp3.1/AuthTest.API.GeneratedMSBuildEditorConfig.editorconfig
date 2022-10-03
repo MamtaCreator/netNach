@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = AuthTest.API
+build_property.ProjectDir = C:\Trainings\ImpactB14\ASP.NETWebAPICore\ImpactB1415WebApiCoreDay05\JWT\AuthTest.API\AuthTest.API\

@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = WithEfCoreInMemoryDb
+build_property.ProjectDir = C:\Trainings\ImpactB14\ASP.NETWebAPICore\ImpactB1415WebApiCoreDay03\WithEfCoreInMemoryDb\WithEfCoreInMemoryDb\

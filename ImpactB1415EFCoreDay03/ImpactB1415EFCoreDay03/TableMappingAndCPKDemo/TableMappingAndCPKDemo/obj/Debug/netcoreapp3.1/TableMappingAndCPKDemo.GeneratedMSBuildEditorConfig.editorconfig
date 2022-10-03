@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = TableMappingAndCPKDemo
+build_property.ProjectDir = C:\Trainings\ImpactB13\DotNet\EFCore\B13EFCoreDay02\TableMappingAndCPKDemo\TableMappingAndCPKDemo\

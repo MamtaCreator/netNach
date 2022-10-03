@@ -1,0 +1,81 @@
+
+
+	EF Core
+		ORM (Object Relational Mapping) Framework which does 1:1 mapping
+		between POCO/.NET Classes and Database Tables.
+
+		Supports 1:1, 1:M and M:M relationships.
+
+		Supports multiple databases.
+
+
+		DbContext
+			Does all heavy lifting
+			Does connection management
+			Tracks Changes
+		DbSet
+			Represents the individual tablein the database
+			Allows us to perform CRUD operation on an entity.
+
+		
+		2 Approaches
+
+		1) Code First: Create POCO/.NET Classes/Entity Classes and Context class
+			       and EF Core generates the database based on these classes.
+
+		2) Database First: Database and Tables are created first and EF Core 			       generates POCO/.NET Classes/Entity Classes and Context class 
+                               from it.
+
+
+		Code First:
+
+		Migrations are something which will create a database and/or tables, views,
+		stored procedures etc based on code written in .NET Core application.
+
+
+
+
+
+
+
+
+
+
+
+
+
+	Code First
+
+	1) Create a .NET Core Application.
+	2) Install the following NuGet packages:
+		Microsoft.EntityFrameworkCore.Tools
+		Microsoft.EntityFrameworkCore.SqlServer
+	3) Create a Models folder to store Entity(POCO) classes and Context class.
+	4) Add POCO classes and Context class.
+	5) Create a Migration using Add-Migration <<migrationName>> command.
+	6) Committ the changes to the database using Update-Database command.
+
+	P.S. : Anytime you make any change (Add a new property, Add data annotations, Remove
+		an existing property, override OnModelCreating and apply some changes via it
+		etc., you need to create a new migration and update the databse again.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		

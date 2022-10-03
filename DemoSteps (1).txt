@@ -1,0 +1,11 @@
+1) Created a .NET Core Console Application.
+2) Created a database and tables in that database.
+3) Installed following NuGet packages in our .NET Core Console Application:
+	a) Microsoft.EntityFrameworkCore.Tools 
+		Commands needed to work with EF Core
+		E.g. - Scaffold-DbContext, Add-Migration, Update-Database etc.
+
+	b) Microsoft.EntityFrameworkCore.SqlServer
+
+4) Go to Package Manager Console and key the following command:
+		Scaffold-DbContext "<<ConnectionString>>" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
